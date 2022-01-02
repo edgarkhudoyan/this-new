@@ -20,14 +20,18 @@ Car.prototype.fill = function (gallons) {
 
 Car.prototype.drive = function (distance) {
   for (let i = 0; i < distance; i++) {
-    this.odometer++;
-    this.tank--;
+    if (this.tank > 0) {
+      this.odometer++;
+      this.tank--;
+    } else {
+      return `Out of tank. Fuel me up!!!`;
+    }
   }
 };
 
 let carOne = new Car('Mercedes', 200);
 
-carOne.fill(200);
-carOne.drive(200);
+carOne.fill(300);
+carOne.drive(250);
 
 console.log(carOne);
